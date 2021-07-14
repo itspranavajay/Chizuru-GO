@@ -8,4 +8,6 @@ import (
 func LoadHandlers(d *ext.Dispatcher) {
 	startCmd := handlers.NewCommand("start", startCMD)
 	d.AddHandler(startCmd)
+	d.AddHandler(handlers.NewCommand("nekos", nekosLIFE))
+	d.AddHandler(handlers.NewCommand("help", getHelp))
 }
