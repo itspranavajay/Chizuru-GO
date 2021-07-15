@@ -3,6 +3,7 @@ package main
 import (
 	"Chizuru-GO/chizuru/bot"
 	"Chizuru-GO/chizuru/config"
+	"Chizuru-GO/chizuru/database"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 	"github.com/bigkevmcd/go-configparser"
@@ -40,6 +41,8 @@ func main() {
 	if err != nil {
 		log.Fatal("failed to start polling: ", err.Error())
 	}
+	database.StartDB()
+	database.EnsureBotInDb(b)
 
 	log.Printf("%s has been started...\n", b.User.Username)
 
