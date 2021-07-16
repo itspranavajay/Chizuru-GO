@@ -15,8 +15,8 @@ This bot supports a variety of endpoints, use them with the <code>/nekos</code> 
 Example: <code>/nekos neko</code>.
 
 Supported endpoints:
-<code>%s</code>
-`, nekosAPI.EndPoints)
+%s
+`, nekosAPI.GetEndpointsHTML())
 
 func getHelp(b *gotgbot.Bot, ctx *ext.Context) (err error) {
 	if ctx.EffectiveChat.Type == "private" {

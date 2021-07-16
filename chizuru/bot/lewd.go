@@ -32,7 +32,7 @@ func nekosLIFE(b *gotgbot.Bot, ctx *ext.Context) (err error) {
 	}
 
 	if !sat {
-		_, err = ctx.EffectiveMessage.Reply(b, fmt.Sprintf("<code>%s</code> is not a valid endpoint\nSupported endpoints:\n <code>%s</code>", args[1], nekosAPI.EndPoints), &gotgbot.SendMessageOpts{ParseMode: "html"})
+		_, err = ctx.EffectiveMessage.Reply(b, fmt.Sprintf("<code>%s</code> is not a valid endpoint\n\n<b>Supported endpoints</b>:\n%s", args[1], nekosAPI.GetEndpointsHTML()), &gotgbot.SendMessageOpts{ParseMode: "html"})
 		return err
 	}
 
