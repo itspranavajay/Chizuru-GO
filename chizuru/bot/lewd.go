@@ -24,12 +24,13 @@ func nekosLIFE(b *gotgbot.Bot, ctx *ext.Context) (err error) {
 				_, err = ctx.EffectiveMessage.Reply(b, fmt.Sprintf("Error: <code>%s</code>", err.Error()), &gotgbot.SendMessageOpts{ParseMode: "html"})
 				return err
 			}
-			if getType(pic.URL) == "image/jpeg" {
+			mimeType := getType(pic.URL)
+			if mimeType == "image/jpeg" {
 				_, err = b.SendPhoto(ctx.EffectiveChat.Id, pic.URL, &gotgbot.SendPhotoOpts{})
-			} else if getType(pic.URL) == "image/gif" {
+			} else if mimeType == "image/gif" {
 				_, err = b.SendAnimation(ctx.EffectiveChat.Id, pic.URL, &gotgbot.SendAnimationOpts{})
 			} else {
-				_, err = b.SendMessage(ctx.EffectiveChat.Id, fmt.Sprintf("Type <code>%s</code> not yet handled", getType(pic.URL)), &gotgbot.SendMessageOpts{ParseMode: "html"})
+				_, err = b.SendMessage(ctx.EffectiveChat.Id, fmt.Sprintf("Type <code>%s</code> not yet handled", mimeType), &gotgbot.SendMessageOpts{ParseMode: "html"})
 			}
 			if err != nil {
 				return err
