@@ -1,2 +1,8 @@
+
 chizuru.cfg
-*exe
+
+# ignore .exe binary file in windows
+*.exe
+
+# ignore executable binary file in linux
+Chizuru-GO

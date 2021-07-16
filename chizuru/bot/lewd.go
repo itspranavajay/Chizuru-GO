@@ -3,6 +3,7 @@ package bot
 import (
 	"Chizuru-GO/chizuru/nekosAPI"
 	"fmt"
+
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 )
@@ -30,7 +31,7 @@ func nekosLIFE(b *gotgbot.Bot, ctx *ext.Context) (err error) {
 		}
 	}
 
-	if sat == false {
+	if !sat {
 		_, err = ctx.EffectiveMessage.Reply(b, fmt.Sprintf("<code>%s</code> is not a valid endpoint\nSupported endpoints:\n <code>%s</code>", args[1], nekosAPI.EndPoints), &gotgbot.SendMessageOpts{ParseMode: "html"})
 		return err
 	}
