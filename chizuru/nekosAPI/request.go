@@ -28,3 +28,14 @@ func DoRequest(target string) (res *Response, err error) {
 	}
 	return data, nil
 }
+
+
+func nekostext(target string) (*TEXT, error) {
+	resp, err := http.Get(fmt.Sprintf("https://nekos.life/api/v2/%v", target))
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	var N = new(Response)
+	json.NewDecoder(resp.Body).Decode(&N)
+	return &N.Data.TEXT, nil
